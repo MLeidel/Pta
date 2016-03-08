@@ -1,2 +1,2 @@
 # Pta
-Programming Textarea - add text editor functions to HTML textarea element - JS library
+Programming Textarea - adds text editor features to HTML textarea element - JS library
