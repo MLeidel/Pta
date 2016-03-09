@@ -373,7 +373,6 @@ Pta.listeners = {initialize:function(sid) {
 			while (sele < txt.length) {
 				sele +=1;
 				if (txt.charCodeAt(sele) < 65) {
-					sele -= 1;
 					break;
 				}
 			}
