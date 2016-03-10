@@ -16,11 +16,11 @@ Functionality of	straight HTML textarea:
 
 Programming Textarea:
 * Keyboard Event Handlers to insert markup
-* line break = ctrl-enter
-* non-blanking space = alt-space
-* comments	= alt-c
-* join lines	= alt-j
-* ins line nbrs	= alt-l
+* line break
+* non-blanking space
+* comments
+* join lines
+* ins line nbrs
 * implement tabs - single or selected lines
   * Really a minimal expectation for any text editor, but very useful when writing code.
 * auto indentation “sticky tabs” 
@@ -32,3 +32,16 @@ Programming Textarea:
 * simplified Zen coding capabilities 
   * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON table.
   * Alt-a will prompt for a tag name and then surround selected text
+
+key | action
+----|-------
+alt-Enter |	HTML Line Break
+ctrl-Space |	HTML Non-Blanking-Space
+alt-c |	HTML comment
+alt-d |	Duplicate Character
+alt-q |	Match Brace
+alt-l |	Toggle Line Nbr Insert
+alt-z |	Zen Insert at Keyword
+alt-a |	Zen wrap with tag
+alt-w |	Repeat Last Tag Wrap
+Tab sel. |	Find Next
