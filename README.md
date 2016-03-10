@@ -2,11 +2,10 @@
 
 ## enhancing textarea with Javascript 
 ### A JS Library
-_level: novice to intermediate, some exposure to Javascript is necessary_
 
 This project is not about online html (WYSIWYG) editors. Although there are many of those available, Programming Textarea is about how to make a textarea into a simple programming text editor using Javascript. HTML editors generally do not include features that simplify coding, with the keyboard. As is, the HTML textarea has minimal capabilities. This project builds many effective code writing enhancements into the standard HTML textarea using only pure Javascript. In fact, at the end of the project you will have a new JS library to implement your own supercharged programming textarea. 
 
-A complete understanding of this project may provide you with additional insight into Javascript programming. You may even see better ways of implementing the ideas presented here. At any rate if you are new to Javascript you may gain a better understanding of how Javascript works in the areas of event driven applications and string handling. The format does assume that you have written web pages (you know HTML) and have used Javascript in them, at a beginners level, at least. 
+Understanding this project will provide you with additional insight into Javascript programming. You may even see better ways of implementing the ideas presented here. At any rate if you are new to Javascript you may gain a better understanding of how Javascript works in the areas of event driven applications and string handling. The format does assume that you have written web pages (you know HTML) and have used Javascript in them, at a beginners level, at least. 
 
 Functionality of	straight HTML textarea:
 * multiple lines of text
