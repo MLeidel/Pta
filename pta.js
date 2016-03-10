@@ -359,8 +359,8 @@ Pta.listeners = {initialize:function(sid) {
 		}
 		txt = p1 + t1 + stxt + t2 + p2;
 		TAo.value = txt;
-		TAo.selectionEnd = sels;
-		TAo.selectionStart = sels;
+		TAo.selectionEnd = txt.length - p2.length;
+		TAo.selectionStart = txt.length - p2.length;
 		return;
 	}
 	function zentag() {
@@ -369,12 +369,13 @@ Pta.listeners = {initialize:function(sid) {
 		var sele = TAo.selectionEnd;
 		var txt = TAo.value;
 		var stag = txt.slice(sels, sele);
+		debugger;
 		if (stag === "") {
 			while (sele < txt.length) {
-				sele +=1;
 				if (txt.charCodeAt(sele) < 65) {
 					break;
 				}
+				sele +=1;
 			}
 			while (sels > 0) {
 				sels -= 1;
@@ -395,15 +396,15 @@ Pta.listeners = {initialize:function(sid) {
 			if (stag === atags[inx]["tag"]) {
 				txt = p1 + atags[inx]["tagx"] + p2;
 				TAo.value = txt;
-				TAo.selectionEnd = sels;
-				TAo.selectionStart = sels;
+				TAo.selectionEnd = txt.length - p2.length;
+				TAo.selectionStart = txt.length - p2.length;
 				return;
 			}
 		}
 		txt = p1 + "<" + stag + "></" + stag + ">" + p2;
 		TAo.value = txt;
-		TAo.selectionEnd = sels;
-		TAo.selectionStart = sels;
+		TAo.selectionEnd = txt.length - p2.length;
+		TAo.selectionStart = txt.length - p2.length;
 		return;
 	}
 }, setLineNbr:function(TAo) {
@@ -483,8 +484,8 @@ Pta.findr = {findText:function(Oid, targ) {
 	p2 = txt.slice(sele);
 	txt = p1 + chng_id.value + p2;
 	TAo.value = txt;
-	TAo.selectionStart = p1.length;
-	TAo.selectionEnd = p1.length;
+	TAo.selectionStart = txt.length - p2.length;
+	TAo.selectionEnd =	txt.length - p2.length;
 	TAo.focus();
 }, replaceAll:function(Oid, targ, chng) {
 	if (arguments.length !== 3) {
