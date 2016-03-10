@@ -1,7 +1,7 @@
 
 keyDown listeners:
 
-alt-enter		insert html line break
+alt-enter	insert html line break
 ctrl-space	insert non-blanking-space
 alt-c		insert html comment tags
 alt-d		duplicate character
@@ -10,7 +10,7 @@ alt-z		zen insert selected (extend in JSON file)
 alt-a		zen wrap selection with tag
 alt-w		zen repeat last wrap tag
 alt-l		toggle line numbers insert
-Tab			find next when selected
+Tab		find next when selected
 
  pta.setKeys:
 		Sets up a Listener for keyDown and then checks for various 
@@ -74,8 +74,8 @@ Tab			find next when selected
  		the beginning and ending html tag. If no text was selected
  		the tags are inserted together at the cursor position.
  		Two special cases are:
-					 			/* inserts: /* selected text */
-					 			<! inserts: <!-- selected text -->
+			/* inserts: /* selected text */
+			<! inserts: <!-- selected text -->
 
 		A Listener for keyDown with Alt-w repeats the last Alt-a wrap
 		with tag operation.
