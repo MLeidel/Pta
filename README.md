@@ -29,7 +29,7 @@ Programming Textarea:
 * brace and paren matching 
   * Most programming languages work with braces { } to define blocks of code. Alt-q attempts to match the brace next to the cursor,       which will select the block of code between the open and closing symbol.
 * simplified Zen coding capabilities 
-  * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON table.
+  * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON file. The JSON array currently contains only 7 commands. This can be completely changed and greatly expanded.
   * Alt-a will prompt for a tag name and then surround selected text
 
 key | action
