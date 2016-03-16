@@ -27,9 +27,6 @@ Pta.listeners = {initialize:function(sid) {
 			insClip("\x3c!--\t--\x3e");
 			return;
 		}
-		if (TAo.value !== "") {
-			TAo.value = rspaces(TAo.value, TAo.style.tabSize);
-		}
 	});
 	function insClip(selection) {
 		var tav = TAo.value;
@@ -39,15 +36,6 @@ Pta.listeners = {initialize:function(sid) {
 		TAo.value = front + selection + back;
 		TAo.selectionEnd = strPos + selection.length;
 		TAo.focus();
-	}
-	function rspaces(sall, tbsz) {
-		var sout = "";
-		var inx;
-		for (inx = 0; inx < tbsz; inx+=1) {
-			sout += " ";
-		}
-		sout = sall.replace(new RegExp(sout, "g"), "\t");
-		return sout;
 	}
 }, setTabs:function(TAo) {
 	TAo.addEventListener("keydown", function(event) {
@@ -321,6 +309,7 @@ Pta.listeners = {initialize:function(sid) {
 			return;
 		}
 	});
+
 	function zentage(m) {
 		var p1, p2, stag, t1, t2;
 		var sels = TAo.selectionStart;
@@ -363,13 +352,15 @@ Pta.listeners = {initialize:function(sid) {
 		TAo.selectionStart = txt.length - p2.length;
 		return;
 	}
+
 	function zentag() {
 		var inx, p1, p2;
 		var sels = TAo.selectionStart;
 		var sele = TAo.selectionEnd;
 		var txt = TAo.value;
 		var stag = txt.slice(sels, sele);
-		debugger;
+		var cpos = 0;	// for ^ position
+
 		if (stag === "") {
 			while (sele < txt.length) {
 				if (txt.charCodeAt(sele) < 65) {
@@ -390,21 +381,37 @@ Pta.listeners = {initialize:function(sid) {
 			alert("No Key Word to Match");
 			return;
 		}
+
 		p1 = txt.slice(0, sels);
 		p2 = txt.slice(sele);
 		for (inx = 0; inx < atags.length; inx+=1) {	
 			if (stag === atags[inx]["tag"]) {
 				txt = p1 + atags[inx]["tagx"] + p2;
-				TAo.value = txt;
-				TAo.selectionEnd = txt.length - p2.length;
-				TAo.selectionStart = txt.length - p2.length;
+				// try to set cursor at ^
+				cpos = txt.indexOf("^", sels);
+				if (cpos === -1) {
+					TAo.value = txt;
+					TAo.selectionEnd = txt.length - p2.length;
+					TAo.selectionStart = txt.length - p2.length;
+				} else {
+						TAo.value = txt.replace(/\^/, "");
+						TAo.selectionEnd = cpos;
+						TAo.selectionStart = cpos;
+					}
+
 				return;
+
 			}
 		}
+
+		// specific tag not found, use the word by the cursor
+
 		txt = p1 + "<" + stag + "></" + stag + ">" + p2;
+		cpos = txt.indexOf("><", sels);
+		cpos+=1;
 		TAo.value = txt;
-		TAo.selectionEnd = txt.length - p2.length;
-		TAo.selectionStart = txt.length - p2.length;
+		TAo.selectionEnd = cpos;
+		TAo.selectionStart = cpos;
 		return;
 	}
 }, setLineNbr:function(TAo) {
@@ -438,7 +445,8 @@ Pta.listeners = {initialize:function(sid) {
 			TAo.value = sout;
 		}
 	});
-}};
+}};	// END Pta.listeners
+
 Pta.findr = {findText:function(Oid, targ) {
 	if (arguments.length !== 2) {
 		alert("missing arguments for findText");
