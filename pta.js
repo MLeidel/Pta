@@ -360,17 +360,17 @@ Pta.listeners = {initialize:function(sid) {
 		var txt = TAo.value;
 		var stag = txt.slice(sels, sele);
 		var cpos = 0;	// for ^ position
-
+debugger;
 		if (stag === "") {
 			while (sele < txt.length) {
-				if (txt.charCodeAt(sele) < 65) {
+				if (txt.charCodeAt(sele) < 49) {
 					break;
 				}
 				sele +=1;
 			}
 			while (sels > 0) {
 				sels -= 1;
-				if (txt.charCodeAt(sels) < 65) {
+				if (txt.charCodeAt(sels) < 49) {
 					sels += 1;
 					break;
 				}
