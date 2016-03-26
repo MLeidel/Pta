@@ -36,6 +36,7 @@ alt-Enter |	HTML Line Break
 ctrl-Space |	HTML Non-Blanking-Space
 alt-c |	HTML comment
 alt-d |	Duplicate Character
+alt-j | Join Lines
 alt-q |	Match Brace
 alt-l |	Toggle Line Nbr Insert
 alt-z |	Zen Insert at Keyword
