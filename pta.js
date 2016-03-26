@@ -185,6 +185,13 @@ Pta.listeners = {initialize:function(sid) {
 			matchBrace();
 		}
 	});
+	TAo.addEventListener("click", function(event) {
+		if (event.ctrlKey) {
+			event.preventDefault();
+			matchBrace();
+		}
+	});
+
 	function matchBrace() {
 		var sta = TAo.value;
 		var cpos = TAo.selectionStart;
@@ -360,7 +367,6 @@ Pta.listeners = {initialize:function(sid) {
 		var txt = TAo.value;
 		var stag = txt.slice(sels, sele);
 		var cpos = 0;	// for ^ position
-debugger;
 		if (stag === "") {
 			while (sele < txt.length) {
 				if (txt.charCodeAt(sele) < 49) {
@@ -385,8 +391,8 @@ debugger;
 		p1 = txt.slice(0, sels);
 		p2 = txt.slice(sele);
 		for (inx = 0; inx < atags.length; inx+=1) {	
-			if (stag === atags[inx]["tag"]) {
-				txt = p1 + atags[inx]["tagx"] + p2;
+			if (stag === atags[inx].tag) {
+				txt = p1 + atags[inx].tagx + p2;
 				// try to set cursor at ^
 				cpos = txt.indexOf("^", sels);
 				if (cpos === -1) {
@@ -438,11 +444,13 @@ debugger;
 						sout += cc;
 					}
 				}
+				TAo.value = sout;
+				TAo.readOnly=true;
 			} else {
-				sout = gSave4LnNbr;
+				TAo.readOnly=false;
+				TAo.value = gSave4LnNbr;
 				gSave4LnNbr = "";
 			}
-			TAo.value = sout;
 		}
 	});
 }};	// END Pta.listeners
