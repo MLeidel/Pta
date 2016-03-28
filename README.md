@@ -3,7 +3,7 @@
 ## enhancing textarea with Javascript 
 ### A JS Library
 
-Programming Textarea is about how to make a textarea into a simple programming text editor. HTML editors generally do not include features that simplify coding, with the keyboard. As is, the HTML textarea has minimal capabilities. This project builds many useful code writing enhancements into standard HTML textarea, using only pure Javascript.
+Programming Textarea is about how to make a textarea into a hack-able code editor. HTML editors generally do not include features that simplify coding, with the keyboard. As is, the HTML textarea has minimal capabilities. This project builds many useful code writing enhancements into standard HTML textarea, using only pure Javascript. currently 7K.
 
 __Functionality of	straight HTML textarea:__
 * multiple lines of text
@@ -27,7 +27,7 @@ __Programming Textarea:__
 * brace and paren matching 
   * Most programming languages work with braces { } to define blocks of code. Alt-q attempts to match the brace next to the cursor,       which will select the block of code between the open and closing symbol.
 * simplified Zen coding capabilities 
-  * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON file. The JSON array currently contains only 7 commands. This can be completely changed and greatly expanded.
+  * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON file. The snip-its array can be modified and greatly expanded in the tags.js file.
   * Alt-a will prompt for a tag name and then surround selected text
 
 key | action
@@ -42,4 +42,4 @@ alt-l |	Toggle Line Nbr Insert
 alt-z |	Zen Insert at Keyword
 alt-a |	Zen wrap with tag
 alt-w |	Repeat Last Tag Wrap
-Tab sel. |	Find Next
+Tab |	Find selected Next
