@@ -1,10 +1,6 @@
 /*
 Pta.js
 Programming Textarea
-(C) Michael D Leidel, 2016
-All Rights Reserved.
-If you use this library it 
-must display this comment block.
 -------------------------------
 After the library is loaded..
 activate with: Pta.listeners.initialize(textarea id);
@@ -414,13 +410,14 @@ Pta.listeners = {initialize:function(sid) {
 					TAo.selectionEnd = txt.length - p2.length;
 					TAo.selectionStart = txt.length - p2.length;
 				} else {
-						TAo.value = txt.replace(/\^/, "");
+						p1 = txt.slice(0, cpos);
+						p2 = txt.slice(cpos+1);
+						txt = p1 + p2;
+						TAo.value = txt;
 						TAo.selectionEnd = cpos;
 						TAo.selectionStart = cpos;
 					}
-
 				return;
-
 			}
 		}
 
