@@ -1,17 +1,21 @@
 /*
 Pta.js
 Programming Textarea
+(C) Michael D Leidel, 2016
+All Rights Reserved.
+If you use this library it 
+must display this comment block.
 -------------------------------
 After the library is loaded..
 activate with: Pta.listeners.initialize(textarea id);
 Find functions:
-Pta.findr.replaceOne(textarea id, text to find, replace text);
+Pta.findr.replaceOne(textarea id, text to find, replace text)
+Pta.insClip(textarea id, text to insert)
 */
 
 var Pta = Pta || {};
 Pta.listeners = {initialize:function(sid) {
 	var Oid = document.getElementById(sid);
-	Pta.listeners.setKeys(Oid);
 	Pta.listeners.setTabs(Oid);
 	Oid.style.tabSize = 4;
 	Pta.listeners.setIndent(Oid);
@@ -20,33 +24,6 @@ Pta.listeners = {initialize:function(sid) {
 	Pta.listeners.setDupChr(Oid);
 	Pta.listeners.setZen(Oid);
 	Pta.listeners.setLineNbr(Oid);
-}, setKeys:function(TAo) {
-	TAo.addEventListener("keydown", function(event) {
-		if (event.keyCode === 13 && event.altKey) {
-			event.preventDefault();
-			insClip("<br>");
-			return;
-		}
-		if (event.keyCode === 32 && event.ctrlKey) {
-			event.preventDefault();
-			insClip("&nbsp;");
-			return;
-		}
-		if (String.fromCharCode(event.which).toLowerCase() === "c" && event.altKey) {
-			event.preventDefault();
-			insClip("\x3c!--\t--\x3e");
-			return;
-		}
-	});
-	function insClip(selection) {
-		var tav = TAo.value;
-		var strPos = TAo.selectionStart;
-		var front = tav.slice(0, strPos);
-		var back = tav.slice(strPos);
-		TAo.value = front + selection + back;
-		TAo.selectionEnd = strPos + selection.length;
-		TAo.focus();
-	}
 }, setTabs:function(TAo) {
 	TAo.addEventListener("keydown", function(event) {
 		if (event.keyCode === 9 && !event.shiftKey) {
@@ -526,4 +503,17 @@ Pta.findr = {findText:function(Oid, targ) {
 	txt = txt.replace(new RegExp(targ_id.value, "g"), chng_id.value);
 	TAo.value = txt;
 	TAo.focus();
-}};
+}};	// END of Pta.findr
+
+Pta.insClip =	function (Oid, itext) {
+	var TAo = document.getElementById(Oid);
+	var tav = TAo.value;
+	var strPos = TAo.selectionStart;
+	var front = tav.slice(0, strPos);
+	var back = tav.slice(strPos);
+	TAo.value = front + itext + back;
+	TAo.selectionEnd = strPos + itext.length;
+	TAo.focus();
+};
+
+	
