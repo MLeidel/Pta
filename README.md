@@ -3,7 +3,7 @@
 ## enhancing textarea with Javascript 
 ### A JS Library
 
-Programming Textarea is about how to make a textarea into a hack-able code editor. HTML editors generally do not include features that simplify coding, with the keyboard. As is, the HTML textarea has minimal capabilities. This project builds many useful code writing enhancements into standard HTML textarea, using only pure Javascript. currently 7K.
+Programming Textarea is about how to make a textarea into a hack-able code editor. HTML editors generally do not include features that simplify coding, with the keyboard. As is, the HTML textarea has minimal capabilities. This project builds many useful code writing enhancements into standard HTML textarea, using only pure Javascript. currently < 7K.
 
 __Functionality of	straight HTML textarea:__
 * multiple lines of text
@@ -13,9 +13,6 @@ __Functionality of	straight HTML textarea:__
 
 __Programming Textarea:__
 * Keyboard Event Handlers to insert markup
-* line break
-* non-blanking space
-* comments
 * join lines
 * ins line nbrs
 * implement tabs - single or selected lines
@@ -32,9 +29,6 @@ __Programming Textarea:__
 
 key | action
 ----|-------
-alt-Enter |	HTML Line Break
-ctrl-Space |	HTML Non-Blanking-Space
-alt-c |	HTML comment
 alt-d |	Duplicate Character
 alt-j | Join Lines
 alt-q |	Match Brace
