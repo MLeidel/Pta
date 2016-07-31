@@ -7,15 +7,15 @@
 	<title>TextArea Demo Page</title>
 	<link rel="stylesheet" href="demo.css" type="text/css">		<!-- for textarea and demo -->
 	<script type="text/javascript" src="demo.js"></script>		<!-- for demo -->
-	<script type="text/javascript" src="tags.js"></script>	<!-- for zen -->
-	<script type="text/javascript" src="pta.js"></script>
+	<script type="text/javascript" src="tags.js"></script>		<!-- for zen -->
+	<script type="text/javascript" src="pta.js"></script>			<!-- uncompressed dev source -->
 </head>
 <body>
 
 <h2><i>Programming Textarea demo</i></h2>
 
-<textarea id="TA" rows="12" cols="54" wrap="off" 
-	spellcheck="false" placeholder="textarea 1"></textarea>
+<textarea id="TA" rows="12" cols="54" wrap="off"
+		spellcheck="false" placeholder="textarea 1"></textarea>
 <br>
 <div class="TOOL">
 	&nbsp;&nbsp;&nbsp;&nbsp;
@@ -29,7 +29,7 @@
 </div>
 <br><br>
 <textarea id="TB" rows="12" cols="54" wrap="off" 
-	spellcheck="false"placeholder="textarea 2"></textarea>
+		spellcheck="false"placeholder="textarea 2"></textarea>
 <br>
 <div class="TOOL">
 	&nbsp;&nbsp;&nbsp;&nbsp;
@@ -42,14 +42,15 @@
 
 </div>
 <br><br>
-<pre>
-alt-enter	insert &lt;br&gt;
-ctrl-space	insert non-blanking-space
-alt-c		insert html comment tags
+<pre><span style="color:gray">
+alt-enter	insert &lt;br&gt; (added to demo.html with Pta.insClip)
+ctrl-space	insert non-blanking-space (added to demo.html with Pta.insClip)
+alt-c		insert html comment tags (added to demo.html with Pta.insClip)</span>
 alt-d		duplicate character
-alt-q		match braces
+alt-j		Join Lines
+alt-q		match braces (or ctrl-left-click)
 alt-j		join lines
-alt-z		zen insert selected
+alt-z		zen insert on key word
 alt-a		zen wrap with tag
 alt-w		repeat last wrap with tag
 alt-l		insert/remove line numbers
@@ -71,6 +72,44 @@ document.getElementById("TB").style.MozTabSize = 4;	// Optional Ffox
 without the above tabSize settings the tabsize will default 
 to your CSS tab-size setting or else the browser default
 */
+
+// Use Pts.insClip(id, txt) to set up other keyboard handlers
+
+		document.getElementById("TA").addEventListener("keydown", function(event) {
+		if (event.keyCode === 13 && event.altKey) {
+			event.preventDefault();
+			Pta.insClip("TA", "<br>");
+			return;
+		}
+		if (event.keyCode === 32 && event.ctrlKey) {
+			event.preventDefault();
+			Pta.insClip("TA", "&nbsp;");
+			return;
+		}
+		if (String.fromCharCode(event.which).toLowerCase() === "c" && event.altKey) {
+			event.preventDefault();
+			Pta.insClip("TA", "\x3c!--\t--\x3e");
+			return;
+		}
+	});
+		document.getElementById("TB").addEventListener("keydown", function(event) {
+		if (event.keyCode === 13 && event.altKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "<br>");
+			return;
+		}
+		if (event.keyCode === 32 && event.ctrlKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "&nbsp;");
+			return;
+		}
+		if (String.fromCharCode(event.which).toLowerCase() === "c" && event.altKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "\x3c!--\t--\x3e");
+			return;
+		}
+	});
+
 </script>
 
 </body>
