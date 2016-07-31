@@ -8,7 +8,7 @@ must display this comment block.
 -------------------------------
 After the library is loaded..
 activate with: Pta.listeners.initialize(textarea id);
-Find functions:
+other functions:
 Pta.findr.replaceOne(textarea id, text to find, replace text)
 Pta.insClip(textarea id, text to insert)
 */
