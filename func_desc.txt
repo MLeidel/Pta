@@ -1,27 +1,14 @@
-
 keyDown listeners:
 
-alt-enter	insert html line break
-ctrl-space	insert non-blanking-space
-alt-c		insert html comment tags
 alt-d		duplicate character
 alt-q		match braces {([])}
-alt-z		zen insert selected (extend in JSON file)
+alt-z		zen insert from key word (extend in JSON file)
 alt-a		zen wrap selection with tag
 alt-w		zen repeat last wrap tag
 alt-l		toggle line numbers insert
-Tab		find next when selected
+Tab			find next when selected
 
- pta.setKeys:
-		Sets up a Listener for keyDown and then checks for various 
-		characters in combination with the keyDown
- 		to invoke the action. One helper function performs
-		text insertion at the selection point. Another
- 		function re-inserts tabs into the text file on every
- 		keyDown. Use the CSS tab-size property to alter the 
- 		tab length.
-
- pta.setTabs:
+ Pta.setTabs:
  		A Listener for Tab (charCode 9) handles three actions.
  		With no selection, a single Tab is inserted into the line.
  		With an entire line selected, the whole line is tabbed,
@@ -35,14 +22,14 @@ Tab		find next when selected
 
  		Use the CSS tab-size property to alter the tab length.
 
- pta.setIndent:
+ Pta.setIndent:
  		A Listener captures the enter key (charCode 13). 
  		Auto indentation is a default condition with the
  		Pta library. So the default action of the enter key
  		is cancelled and the beginning of the new line will 
  		indent to the indentation of the previous line.
 
- pta.setMatching:
+ Pta.setMatching:
  		A Listener for keyDown with Alt-q will attempt to match
  		one of three kinds of grouping syntax: {([])} 
  		The cursor must be placed at the leading or trailing
@@ -50,17 +37,17 @@ Tab		find next when selected
  		A correct match is indicated by a selection of all text
  		from one bracket to the other.
 
- pta.setDupChr:
+ Pta.setDupChr:
  		A Listener for keyDown with Alt-d will duplicate the
  		character found in the same position of the previous 
  		line. 
 
- pta.setLineNbr:
+ Pta.setLineNbr:
  		A Listener for keyDown Alt-l inserts line numbers into
  		the far left columns. Pressing Alt-l again removes the
  		line numbers.
 
- pta.setZen:
+ Pta.setZen:
  		A Listener for keyDown with Alt-z uses the word near
  		the cursor (or	selected) as a key to lookup an
  		expanded phrase which has been previously defined in a
@@ -74,13 +61,13 @@ Tab		find next when selected
  		the beginning and ending html tag. If no text was selected
  		the tags are inserted together at the cursor position.
  		Two special cases are:
-			/* inserts: /* selected text */
-			<! inserts: <!-- selected text -->
+					 			/* inserts: 	/* selected text */
+					 			<! inserts: 	<!-- selected text -->
 
 		A Listener for keyDown with Alt-w repeats the last Alt-a wrap
 		with tag operation.
 
-pta.findr
+Pta.findr()
 		“findr” is a function that does not require initialization, located
  		inside the Pta namespace with three methods:
 
@@ -92,11 +79,26 @@ pta.findr
  		an INPUT field holding the target text. The	next argument is
  		the ID of the INPUT field for the replacement text.
 
+Pta.insClip()
+		Use this function to insert text into the textarea at the cursor.
+
+			Pta.insClip(Textarea ID, Text)
+
+Sample of a keyhandler using insClip function:
+
+		document.getElementById("TA").addEventListener("keydown", function(event) {
+		if (event.keyCode === 13 && event.altKey) {		// break
+			event.preventDefault();
+			Pta.insClip("TA", "<br>");
+			return;
+		}
+	});
+
 -------------------------------------------------------------------------
 
 Using Pta with one textarea (id=”TA”) would look like this:
 
-<script type="text/javascript" src="pta.js"></script>
+<script type="text/javascript" src="Pta.js"></script>
 <script type="text/javascript" src="tags.js"></script>
 
 // onload
