@@ -24,8 +24,8 @@ __Programming Textarea:__
 * brace and paren matching 
   * Most programming languages work with braces { } to define blocks of code. Alt-q attempts to match the brace next to the cursor,       which will select the block of code between the open and closing symbol.
 * simplified Zen coding capabilities 
-  * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON file. The snip-its array can be modified and greatly expanded in the tags.js file.
-  * Alt-a will prompt for a tag name and then surround selected text
+  * By selecting text and pressing Alt-z the text acts as a key to find and insert text (markup or code) from a JSON file. The clips array can be modified and greatly expanded in the tags.js file. Alternatively Alt-z will wrap the any word in <word></word> braces.
+  * Alt-a will prompt for a tag name and then surround selected text. "ucase", "lcase", and "sep, char" are additional options
 
 key | action
 ----|-------
