@@ -601,11 +601,13 @@ Pta.findr = {findText:function(Oid, targ) {
 	var si = TAo.selectionEnd;
 	i1 = stxt.indexOf(targ_id.value, si);
 	i2 = i1 + len;
-	if (i1 >= 0) {
+	if (i1 >= 0) {	// match found
 		TAo.selectionStart = i1;
 		TAo.selectionEnd = i2;
+		TAo.focus();
+		return;
 	} else {
-		if (si > 0) {
+		if (si > 0) {	// back to top
 			TAo.selectionStart = 0;
 			TAo.selectionEnd = 0;
 			Pta.findr.findText(Oid, targ);
