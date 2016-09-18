@@ -30,10 +30,11 @@ __Programming Textarea:__
 key | action
 ----|-------
 alt-d |	Duplicate Character
-alt-j | Join Lines
+alt-t | Join Lines
 alt-q |	Match Brace
-alt-l |	Toggle Line Nbr Insert
+alt-n |	Toggle Line Nbr Insert
 alt-z |	Zen Insert at Keyword
 alt-a |	Zen wrap with tag
 alt-w |	Repeat Last Tag Wrap
+alt- | j=down k=up l=left ;=right
 Tab |	Find selected Next
