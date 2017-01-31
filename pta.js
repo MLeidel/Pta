@@ -11,7 +11,6 @@ activate with: Pta.listeners.initialize(textarea id);
 Find functions:
 Pta.findr.replaceOne(textarea id, text to find, replace text)
 Pta.insClip(textarea id, text to insert)
-Updated: 091616
 */
 
 var Pta = Pta || {};
@@ -25,7 +24,6 @@ Pta.listeners = {initialize:function(sid) {
 	Pta.listeners.setDupChr(Oid);
 	Pta.listeners.setZen(Oid);
 	Pta.listeners.setLineNbr(Oid);
-	Pta.listeners.setMoveCrs(Oid);
 }, setTabs:function(TAo) {
 	TAo.addEventListener("keydown", function(event) {
 		if (event.keyCode === 9 && !event.shiftKey) {
@@ -348,8 +346,18 @@ Pta.listeners = {initialize:function(sid) {
 						t2 = "";
 						stxt = stxt.toLowerCase();
 					} else {
-						t1 = "<" + stag + ">";
-						t2 = "</" + stag + ">";
+						if (stag === "\"") {
+							t1 = "\"";
+							t2 = "\"";
+						} else {
+							if (stag === "'") {
+								t1 = "'";
+								t2 = "'";
+							} else {
+								t1 = "<" + stag + ">";
+								t2 = "</" + stag + ">";
+							}
+						}
 					}
 				}
 			}
@@ -455,137 +463,7 @@ Pta.listeners = {initialize:function(sid) {
 			}
 		}
 	});
-}, setMoveCrs:function(TAo) {
-
-	TAo.addEventListener("keydown", function(event) {
-		if (String.fromCharCode(event.which).toLowerCase() === "j" && event.altKey) {
-			event.preventDefault();
-			// cursor down
-			curDown();
-			return;
-		}
-		if (String.fromCharCode(event.which).toLowerCase() === "k" && event.altKey) {
-			event.preventDefault();
-			// cursor up
-			curUp();
-			return;
-		}
-	});
-	TAo.addEventListener("keydown", function(event) {
-		if (String.fromCharCode(event.which).toLowerCase() === "l" && event.altKey) {
-			event.preventDefault();
-			// cursor left
-			curLeft();
-			return;
-		}
-		if (String.fromCharCode(event.which).toLowerCase() === ";" && event.altKey) {
-			event.preventDefault();
-			// cursor right
-			curRight();
-			return;
-		}
-	});
-
-	function curLeft() {
-		var s;
-		s = TAo.selectionStart - 1;
-		if (s < 0) s = 0;
-		TAo.selectionEnd = s;
-		TAo.selectionStart = s;
-	}
-
-	function curRight() {
-		var s, v;
-		v = TAo.value;
-		s = TAo.selectionStart + 1;
-		if (s >= v.length) s = v.length - 1;
-		TAo.selectionStart = s;
-		TAo.selectionEnd = s;
-	}
-
-	function curDown() {
-		var p, s, v, inx;
-		v = TAo.value;
-		s = TAo.selectionStart;
-		p = getLnPos(s);
-
-		for(inx = s; inx < v.length; inx++) {
-			if (v.charCodeAt(inx) === 10) {
-				break;
-			}
-		}
-
-		p += inx;
-		inx++;
-
-		for (s = inx; s < v.length; s++) {
-			if (v.charCodeAt(s) === 10) {
-				break;
-			}
-			if (s >= p) {
-				break;
-			}
-		}
-		TAo.selectionEnd = s;
-		TAo.selectionStart = s;	
-	}
-
-	function curUp() {
-		var p, s, v, inx;
-		v = TAo.value;
-		s = TAo.selectionStart;
-		if (v.charCodeAt(s) === 10) s--;
-		p = getLnPos(s);
-
-		for(inx = s; inx >= 0; inx--) {
-			if (v.charCodeAt(inx) === 10) {
-				break;
-			}
-		}
-
-		// at end of line above
-		inx--;
-
-		for(s = inx; s >= 0; s--) {
-			if (v.charCodeAt(s) === 10) {
-				break;
-			}
-		}
-
-		// here we should be at 0 of the line above
-		p += s;
-		s++;
-		inx = s;	// 1 ahead of the LF
-
-		// now going forward again to line position p
-		for (s = inx; s < v.length; s++) {
-			if (v.charCodeAt(s) === 10) {
-				break;
-			}
-			if (s >= p) {
-				break;
-			}
-		}
-		TAo.selectionEnd = s;
-		TAo.selectionStart = s;	
-	}
-
-	function getLnPos(cp) {
-		var inx, v, ct = 0;
-		v = TAo.value;
-		for(inx = cp; inx >= 0; inx--) {
-			if (v.charCodeAt(inx) === 10) {
-				if (inx === cp) continue;	// was on a LF
-				break;
-			} else {
-				ct += 1;
-			}
-		}
-		return ct;
-	}
-
-	}
-
+}
 };	// END Pta.listeners
 
 Pta.findr = {findText:function(Oid, targ) {
