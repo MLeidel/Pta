@@ -66,6 +66,10 @@ Tab			find next when selected
 
 		A Listener for keyDown with Alt-w repeats the last Alt-a wrap
 		with tag operation.
+		
+		Commands. "ucase" - changes selection to uppercase
+		"lcase" - changes selection to lowercase
+		"sep,c" - changes selection by inserting some character "c"
 
 Pta.findr()
 		“findr” is a function that does not require initialization, located
