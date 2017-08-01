@@ -6,7 +6,7 @@
 Programming Textarea makes a textarea into a simple code editor. This project builds some useful code writing enhancements into standard HTML textarea, using only pure Javascript (library). currently < 7K.
 
 __Programming Textarea:__
-* Keyboard Event Handlers to insert markup
+* Keyboard Event Handlers (hot-keys)
 * join lines
 * ins line nbrs
 * implement tabs - single or selected lines
