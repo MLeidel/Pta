@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<title>TextArea Demo Page</title>
+	<link rel="stylesheet" href="demo.css" type="text/css">		<!-- for textarea and demo -->
+	<script type="text/javascript" src="demo.js"></script>		<!-- for demo -->
+	<script type="text/javascript" src="tags.js"></script>		<!-- for zen -->
+	<script type="text/javascript" src="pta.js"></script>			<!-- uncompressed dev source -->
+</head>
+<body>
+
+<h2><i>Programming Textarea demo</i></h2>
+
+<textarea id="TA" rows="12" cols="54" wrap="off"
+		spellcheck="false" placeholder="textarea 1"></textarea>
+<br>
+<div class="TOOL">
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="button" value="render"	 onclick="render('TA');">&nbsp;
+	<input type="button" value="find" 	 onclick="Pta.findr.findText('TA','S1');">
+	<input type="search" id="S1" size="6">&nbsp;
+	<input type="button" value="replace" onclick="Pta.findr.replaceOne('TA','S1','R1');">
+	<input type="search" id="R1" size="6">&nbsp;
+	<input type="button" value="rep all" onclick="Pta.findr.replaceAll('TA','S1','R1');">
+
+</div>
+<br><br>
+<textarea id="TB" rows="12" cols="54" wrap="off" 
+		spellcheck="false"placeholder="textarea 2"></textarea>
+<br>
+<div class="TOOL">
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="button" value="render"	 onclick="render('TB');">&nbsp;
+	<input type="button" value="find" 	 onclick="Pta.findr.findText('TB','S2');">
+	<input type="search" id="S2" size="6">&nbsp;
+	<input type="button" value="replace" onclick="Pta.findr.replaceOne('TB','S2','R2');">
+	<input type="search" id="R2" size="6">&nbsp;
+	<input type="button" value="rep all" onclick="Pta.findr.replaceAll('TB','S2','R2');">
+
+</div>
+<br><br>
+<pre><span style="color:gray">
+<b>alt-d</b>	Duplicate from above character
+<b>alt-q</b>	match braces {( )} - (Ctrl-leftClick also works)
+<b>alt-z</b>	Zen insert from key word (extend in JSON file)
+<b>alt-a</b>	zen wrap (Around) selection with tag or command (ucase,lcase,$,",',&lt;!,/*)
+<b>alt-w</b>	zen repeat last Wrap tag
+<b>alt-n</b>	toggle line Numbers insert
+<b>alt-t</b>	join lines Together
+<b>Tab</b>	find next match with selection 
+<b>Additional event listenters coded in demo:</b>
+ctl-Enter	insert &lt;br&gt;
+ctl-Space	insert non-blanking space
+alt-c		insert html comment brackets
+ctl-shift-z	view list of zen hotkey tags
+</pre>
+
+<!-- This Javascript last to load -->
+<script type="text/javascript">
+
+Pta.listeners.initialize("TA");		/* init textarea 1 */
+Pta.listeners.initialize("TB");		/* init textarea 2 */
+
+document.getElementById("TA").style.tabSize = 2;	// Optional
+document.getElementById("TB").style.tabSize = 4;	// Optional
+document.getElementById("TA").style.MozTabSize = 2;	// Optional Ffox
+document.getElementById("TB").style.MozTabSize = 4;	// Optional Ffox
+
+/* 
+without the above tabSize settings the tabsize will default 
+to your CSS tab-size setting or else the browser default
+*/
+
+// Use Pta.insClip(id, txt) to SET UP OTHER KEYBOARD HANDLERS
+
+		document.getElementById("TA").addEventListener("keydown", function(event) {
+		if (event.keyCode === 13 && event.ctrlKey) {
+			event.preventDefault();
+			Pta.insClip("TA", "<br>");
+			return;
+		}
+		if (event.keyCode === 32 && event.ctrlKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "&nbsp;");
+			return;
+		}
+		if (String.fromCharCode(event.which).toLowerCase() === "c" && event.altKey) {
+			event.preventDefault();
+			Pta.insClip("TA", "\x3c!--\t--\x3e");
+			return;
+		}
+	});
+		document.getElementById("TB").addEventListener("keydown", function(event) {
+		if (event.keyCode === 13 && event.ctrlKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "<br>");
+			return;
+		}
+		if (event.keyCode === 32 && event.ctrlKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "&nbsp;");
+			return;
+		}
+		if (String.fromCharCode(event.which).toLowerCase() === "c" && event.altKey) {
+			event.preventDefault();
+			Pta.insClip("TB", "\x3c!--\t--\x3e");
+			return;
+		}
+	});
+
+		document.getElementById("TA").addEventListener("keydown", function(event) {
+		if (String.fromCharCode(event.which).toLowerCase() === "z" && event.shiftKey && event.ctrlKey) {
+			event.preventDefault(); 
+			window.open("zenkeys.html");
+			return;
+		}
+	});
+
+</script>
+
+</body>
+</html>
