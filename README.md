@@ -9,6 +9,7 @@ Programming Textarea makes a textarea into a simple code editor. This project bu
 Many of these features were incorporated into the "iedit" repository  
 where the "Ace" text editor is used instead of a textarea.  
 
+---
 
 __Programming Textarea:__
 * Keyboard Event Handlers (hot-keys)
