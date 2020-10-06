@@ -5,6 +5,11 @@
 
 Programming Textarea makes a textarea into a simple code editor. This project builds some useful code writing enhancements into standard HTML textarea, using only pure Javascript (library). currently < 7K.
 
+## side note:
+Many of these features were incorporated into the "iedit" repository  
+where the "Ace" text editor is used instead of a textarea.  
+
+
 __Programming Textarea:__
 * Keyboard Event Handlers (hot-keys)
 * Join Lines
